@@ -1,27 +1,38 @@
-# AngularTailwindcssFourvenues
+# Prueba-front-end-Angular-TailwindCSS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+<!-- TOC depthFrom:2 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-## Development server
+- [Prueba-front-end-Angular-TailwindCSS](#Prueba-front-end-Angular-TailwindCSS-)
+  - [Introducción](#Introducción)
+  - [Aplicación](#Aplicación)
+  - [Funcionalidades](#Funcionalidades)
+  - [Commits](#Commits)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+<!-- /TOC -->
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Introducción
 
-## Build
+Este repositorio es una prueba tecnica que se demanda desde una empresa, la cual consiste en crear un proyecto que muestre un dashboard maquetado por nosotros y  con ciertas funcionalidades.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Aplicación
+El proyecto deberá ser construido mediante la ultima versión de Angular y maquetado con la ultima version de TailwindCSS.
 
-## Running unit tests
+## Funcionalidades
+El proyecto tendrá como objetivo las siguientes funcionalidades y caracteristicas.
+<!-- TOC depthFrom:2 depthTo:3 withLinks:0 updateOnSave:1 orderedList:0 -->
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Funcionalidades y Caracteristicas
+  - Construir el proyecto con la última versión de Angular
+  - Utilizar TailwindCSS con Play CDN
+  - Maquetar uno de los 4 diseños que nos demandan
+  - Los diseños deberán ser responsive
+  - Los datos serán ficticios excepto la cuenta de usuario
+  - Recuperar un usuario haciendo llamada a la API de RandomUser
+  - Recuperar un usuario nuevo cada 10 segundos
+  - Recuperar un nuevo usuario aleatorio inmediatamente al hacer clic sobre la foto reseteando el contador de los 10 segundos.
 
-## Running end-to-end tests
+<!-- /TOC -->
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Commits
+Se deberán hacer los commits respectivos de cada una de las fases del proyecto.
