@@ -1,20 +1,534 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="dark:bg-gray-800 h-full flex flex-col">
+  <!-- Top nav-->
+  <header class="dark:bg-gray-700 dark:text-gray-400 flex-shrink-0 relative h-24 bg-white flex items-center">
+    <div class="absolute inset-y-0 left-0 md:static md:flex-shrink-0 border-0 border-b border-gray-600">
+      <a href="#" class="flex items-center justify-center h-24 w-16 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset md:w-20">
+        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </a>
+    </div>
 
+    <div class="mx-auto md:hidden">
+      <div class="relative">
+        <label for="inbox-select" class="sr-only">Choose inbox</label>
+        <select id="inbox-select" class="rounded-md border-0 bg-none pl-3 pr-8 text-base font-medium text-gray-900 focus:ring-2 focus:ring-indigo-600">
+          <option selected>Open</option>
+
+          <option>Archive</option>
+
+          <option>Customers</option>
+
+          <option>Flagged</option>
+
+          <option>Spam</option>
+
+          <option>Drafts</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-2">
+          <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute inset-y-0 right-0 pr-4 flex items-center sm:pr-6 md:hidden">
+      <!-- Mobile menu button -->
+      <button type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+        <span class="sr-only">Open main menu</span>
+        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop nav area -->
+    <div class="hidden md:min-w-0 md:flex-1 md:flex md:items-center md:justify-between">
+      <div class="dark:text-white font-bold w-56 border-0 border-r dark:border-gray-600 border-gray-200 h-24 flex items-center justify-center">
+        Web Interface
+      </div>
+      <div class="flex justify-center items-center space-x-8 px-20 border-0 border-r dark:border-gray-600 border-gray-200 h-24 text-sm">
+        <a href="#!">Popular</a>
+        <a href="#!">For You</a>
+        <a href="#!">Messages</a>
+      </div>
+      <div class="min-w-0 flex-1">
+        <div class="max-w-2xl relative text-gray-400 dark:focus-within:text-gray-300 focus-within:text-gray-500">
+          <input id="desktop-search" type="search" placeholder="Search messages" class="block w-full border-transparent dark:bg-gray-700 pl-12 placeholder-gray-500 focus:border-transparent sm:text-sm focus-visible:outline-none" />
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ml-10 pr-4 flex-shrink-0 flex items-center space-x-10">
+        <div class="flex items-center space-x-8">
+          <span class="inline-flex">
+            <a href="#" class="-mx-1 bg-white p-1 rounded-full text-gray-400 dark:bg-gray-700 hover:text-gray-500">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </a>
+          </span>
+
+          <div class="relative inline-block text-left">
+            <button type="button" class="dark:text-gray-300 dark:bg-gray-700 bg-white rounded-full flex items-center space-x-2 text-sm focus:outline-none focus:ring-2  focus:ring-indigo-600" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
+              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+              <span> NOMBREUSUARIO </span>
+              <svg class="w-4 h-4 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu-->
+
+    <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
+  
+      <div class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75"></div>
+
+      <div class="fixed inset-0 z-40">
+      
+        <div class="fixed z-40 inset-0 h-full w-full dark:bg-gray-800 bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
+          <div class="h-16 flex items-center justify-between px-4 sm:px-6">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex h-6 w-6 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span class="text-xl dark:text-white">Fourvenues</span>
+            </a>
+            <button type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md dark:hover:bg-gray-700 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+              <span class="sr-only">Close main menu</span>
+              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-2 max-w-8xl mx-auto px-4 sm:px-6">
+            <div class="relative text-gray-400 focus-within:text-gray-500">
+              <label for="mobile-search" class="sr-only">Search all inboxes</label>
+              <input id="mobile-search" type="search" placeholder="Search all inboxes" class="dark:bg-gray-800 dark:text-gray-300 block w-full border-gray-300 rounded-md pl-10 placeholder-gray-500 focus-visible:outline-none focus:border-indigo-600 focus:ring-indigo-600" />
+              <div class="dark:text-gray-300 absolute inset-y-0 left-0 flex items-center justify-center pl-3">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="max-w-8xl mx-auto py-3 px-2 sm:px-4">
+
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:hover:bg-gray-700 dark:text-gray-300 text-gray-700 hover:bg-gray-100 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+              Home</a>
+
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:hover:bg-gray-700 dark:text-gray-300 text-gray-700 hover:bg-gray-100 flex gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Settings</a>
+
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:hover:bg-gray-700 dark:text-gray-300 text-gray-700 hover:bg-gray-100 flex gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+            </svg>
+              Messaging</a>
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:hover:bg-gray-700 dark:text-gray-300 text-gray-700 hover:bg-gray-100 flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+              User</a>
+
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:hover:bg-gray-700 dark:text-gray-300 text-gray-700 hover:bg-gray-100 flex gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              Groups</a>
+
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:hover:bg-gray-700 dark:text-gray-300 text-gray-700 hover:bg-gray-100 flex gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+              Gallery</a>
+          </div>
+          <div class="border-t dark:border-gray-600 border-gray-200 pt-4 pb-3">
+            <div class="max-w-8xl mx-auto px-4 flex items-center sm:px-6">
+              <button type="button" class=" dark:bg-gray-800 bg-white rounded-full flex items-center space-x-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
+                <div class="flex-shrink-0">
+                  <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                </div>
+                <div class="ml-3 min-w-0 flex-1">
+                  <div class="text-base font-medium dark:text-gray-300 text-gray-800 truncate">
+                  NOMBREUSUARIO
+                  </div>
+                </div>
+              </button>
+
+              <a href="#" class="dark:bg-gray-800 dark:text-gray-300 ml-auto flex-shrink-0 bg-white p-2 text-gray-400 hover:text-gray-500">
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </a>
+            </div>
+            <div class=" mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
+              <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:text-gray-300 text-gray-900 dark:hover:bg-gray-700 hover:bg-gray-50">Your Profile</a>
+
+              <a href="#" class="block rounded-md py-2 px-3 text-base font-medium dark:text-gray-300 text-gray-900 dark:hover:bg-gray-700 hover:bg-gray-50">Sign out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="min-h-0 flex-1 flex overflow-hidden">
+    <nav aria-label="Sidebar" class="hidden md:block md:flex-shrink-0 md:bg-gray-800 md:overflow-y-auto">
+      <div class="relative w-20 flex flex-col py-3 dark:mt-10 dark:space-y-3">
+        <a href="#" class="bg-blue-600 dark:bg-gray-800 text-white flex-shrink-0 inline-flex items-center justify-center h-20">
+          <span class="sr-only">Home</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </a>
+
+        <a href="#" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-20">
+          <span class="sr-only">Archive</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          </svg>
+        </a>
+
+        <a href="#" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-20">
+          <span class="sr-only">Customers</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
+
+        <a href="#" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-20">
+          <span class="sr-only">User</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </a>
+
+        <a href="#" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-20">
+          <span class="sr-only">Groups</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </a>
+
+        <a href="#" class="text-gray-400 hover:bg-gray-700 flex-shrink-0 inline-flex items-center justify-center h-20">
+          <span class="sr-only">Gallery</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main area -->
+    <main class="min-w-0 flex-1 border-t dark:border-gray-600 border-gray-200 flex flex-col md:flex-row overflow-y-auto">
+      <div class="block md:flex-shrink-0 md:order-last flex-1">
+        <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-y-auto md:px-6">
+
+
+          <div class="flex-col-3 lg:inline-flex py-6">
+            <div class="grow">
+
+              <span class="font-bold dark:text-white items-center justify-center text-lg inline-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-6 h-5 w-5 text-gray-400 dark:color-white" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                </svg> Dashboard</span>
+
+            </div>
+
+            <span class="grow ">
+
+              <button type="button" class="relative inline-flex  shadow-sm px-4 py-2 rounded-l-full border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                Today
+              </button>
+              <button type="button" class=" relative inline-flex  px-4 py-2 border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                Week
+              </button>
+              <button type="button" class=" relative inline-flex  px-4 py-2 border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                Month
+              </button>
+              <button type="button" class=" relative inline-flex  px-4 py-2 border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                Quarter
+              </button>
+              <button type="button" class=" relative inline-flex shadow-sm px-4 py-2 rounded-r-full border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                Year
+              </button>
+              <button type="button" class="relative items-center justify-center sm:ml-4 inline-flex px-8 py-2 rounded-full border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                24 mar - 23 apr 2019
+              </button>
+            </span>
+
+            <span>
+              <button type="button" class="ml-4 items-center justify-center inline-flex px-4 py-2 rounded-full border dark:border-gray-600 border-gray-300 bg-white text-sm font-medium dark:bg-gray-800 dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+                Add Widget
+              </button>
+            </span>
+
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-5 gap-4">
+            <div class="p-4 order-1 md:order-none border dark:border-gray-600 border-gray-200 shadow-md bg-white border-l-4 border-l-cyan-500 dark:border-l-cyan-500 dark:bg-gray-700 dark:border-gray-700  ">
+              <div class="flex justify-end items-end ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </div>
+              <div class="flex-col w-full">
+                <h1 class="text-2xl text-bold text-gray-700 dark:text-white dark:text-gray-400">26,578</h1>
+                <h1 class="text-lg text-gray-500">
+                  Sessions
+                </h1>
+              </div>
+              <div class="flex justify-end items-end ">
+                <span class="flex ml-3 text-green-500">+50%<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg></span>
+              </div>
+            </div>
+            <div class=" order-7 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white md:col-span-2 md:row-span-3 dark:bg-gray-700 dark:border-gray-700    ">
+              Hola 2
+            </div>
+            <div class="order-4 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white bg-blue-900 text-white dark:border-gray-700">
+              <div class="flex justify-end items-end ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </div>
+              <div class="flex-col w-full">
+                <h1 class="text-2xl text-bold  text-white">26,578</h1>
+              </div>
+              <div class="flex">
+                <span class="flex grow justify-start items-start">Facebook Likes</span> <span class="flex justify-end items-end ml-3 text-white">+42%<svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg></span>
+              </div>
+            </div>
+            <div class="order-2 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white border-l-4 border-l-purple-500 dark:border-l-cyan-500 dark:bg-gray-700 dark:border-gray-700  ">
+              <div class="flex justify-end items-end ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </div>
+              <div class="flex-col w-full">
+                <h1 class="text-2xl text-bold dark:text-white text-gray-700 dark:text-gray-400">21,345</h1>
+                <h1 class="text-lg text-gray-500">
+                  Users
+                </h1>
+              </div>
+              <div class="flex justify-end items-end ">
+                <span class="flex ml-3 text-green-500">+48%<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg></span>
+              </div>
+            </div>
+            <div class="order-5 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white bg-sky-400 text-white dark:border-gray-700 ">
+              <div class="flex justify-end items-end ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </div>
+              <div class="flex-col w-full">
+                <h1 class="text-2xl text-bold text-white">1202</h1>
+              </div>
+              <div class="flex">
+                <span class="flex grow justify-start items-start">Twitter retweets</span> <span class="flex justify-end items-end ml-3 text-white">+42%<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg></span>
+              </div>
+            </div>
+            <div class="order-3 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white border-l-4 border-l-yellow-500 dark:border-l-cyan-500 dark:bg-gray-700 dark:border-gray-700  ">
+              <div class="flex justify-end items-end ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </div>
+              <div class="flex-col w-full">
+                <h1 class="text-2xl text-bold text-gray-700 dark:text-white">31,244</h1>
+                <h1 class="text-lg text-gray-500">
+                  Pageviews
+                </h1>
+              </div>
+              <div class="flex justify-end items-end ">
+                <span class="flex ml-3 text-red-500">-11%<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg></span>
+              </div>
+            </div>
+            <div class="order-6 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md text-white bg-gradient-to-br from-yellow-300 via-rose-500 to-blue-900 dark:border-gray-700 ">
+              <div class="flex justify-end items-end ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+              </div>
+              <div class="flex-col w-full">
+                <h1 class="text-2xl text-bold text-white">2132</h1>
+              </div>
+              <div class="flex">
+                <span class="flex grow justify-start items-start">Instagram Likes</span> <span class="flex justify-end items-end ml-3 text-white">+42%<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg></span>
+              </div>
+            </div>
+            <div class=" order-8 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white md:col-span-2 md:row-span-2 dark:bg-gray-700 dark:border-gray-700  ">
+              Hola 8
+            </div>
+            <div class="order-9 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white md:row-span-2 dark:bg-gray-700 dark:border-gray-700  ">
+              Hola 9
+            </div>
+            <div class="order-10 md:order-none p-4 border dark:border-gray-600 border-gray-200 shadow-md bg-white md:row-span-2 dark:bg-gray-700 dark:border-gray-700  ">
+              Hola 10
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="block md:flex-shrink-0 md:order-first">
+        <div class="h-full relative flex flex-col divide-y dark:divide-gray-600 divide-gray-200 w-full md:w-56 border-r dark:border-gray-600 border-gray-200 dark:bg-gray-800 bg-white overflow-y-auto">
+          <div class="px-8 pt-6 pb-4">
+            <div class="ml-1 mb-4 text-gray-400 text-xs font-bold">
+              Dashboards
+            </div>
+            <nav class="space-y-1" aria-label="Sidebar">
+              <a href="#" class="text-gray-900 group flex items-center py-2 dark:hover:text-gray-100 dark:hover:bg-gray-700 dark:text-gray-100 text-sm font-medium rounded-md" aria-current="page">
+                <span class="truncate"> Messages </span>
+              </a>
+
+              <a href="#" class="text-gray-600  dark:text-gray-400 dark:hover:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-50 hover:text-gray-900 group flex items-center py-2 text-sm font-medium rounded-md relative">
+                <span class="truncate"> Notification </span>
+
+                <span class="bg-blue-600 text-white group-hover:bg-blue-700 ml-auto inline-block py-2.5 px-3.5 text-xs rounded-full absolute right-0">
+                  4
+                </span>
+              </a>
+
+              <a href="#" class="text-gray-600 dark:text-gray-400 dark:hover:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-50 hover:text-gray-900 group flex items-center py-2 text-sm font-medium rounded-md">
+                <span class="truncate"> Friends </span>
+              </a>
+
+              <a href="#" class="text-gray-600 dark:text-gray-400 dark:hover:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-50 hover:text-gray-900 group flex items-center py-2 text-sm font-medium rounded-md">
+                <span class="truncate"> Projects </span>
+              </a>
+
+              <a href="#" class="text-gray-600 dark:text-gray-400 dark:hover:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-50 hover:text-gray-900 group flex items-center py-2 text-sm font-medium rounded-md">
+                <span class="truncate"> Calendar </span>
+              </a>
+
+              <a href="#" class="text-gray-600 dark:text-gray-400 dark:hover:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-50 hover:text-gray-900 group flex items-center py-2 text-sm font-medium rounded-md">
+                <span class="truncate"> Users </span>
+              </a>
+
+              <a href="#" class="text-gray-600 dark:text-gray-400 dark:hover:text-gray-400 dark:hover:bg-gray-700 hover:bg-gray-50 hover:text-gray-900 group flex items-center py-2 text-sm font-medium rounded-md">
+                <span class="truncate"> Top Charts </span>
+              </a>
+            </nav>
+          </div>
+          <div class="px-8 pt-6 flex-1">
+            <div class="ml-1 mb-2 dark:text-gray-300 text-gray-400 text-xs font-bold">
+              Contacts
+            </div>
+            <ul role="list" class="">
+              <li class="py-2 flex items-center space-x-2 relative">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <span class="absolute left-4 top-2 block h-2 w-2 rounded-full ring-2 ring-white bg-blue-600"></span>
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">
+                    Steven McGuire
+                  </p>
+                </div>
+              </li>
+
+              <li class="py-2 flex items-center space-x-2 relative">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <span class="absolute left-4 top-2 block h-2 w-2 rounded-full ring-2 ring-white bg-blue-600"></span>
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">
+                    Marble Drake
+                  </p>
+                </div>
+              </li>
+
+              <li class="py-2 flex items-center space-x-2 relative">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <span class="absolute left-4 top-2 block h-2 w-2 rounded-full ring-2 ring-white bg-blue-600"></span>
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">
+                    Rebecca Reeves
+                  </p>
+                </div>
+              </li>
+
+              <li class="py-2 flex items-center space-x-2">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">
+                    Franklin Herrera
+                  </p>
+                </div>
+              </li>
+              <li class="py-2 flex items-center space-x-2">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">
+                    Danny Cooler
+                  </p>
+                </div>
+              </li>
+
+              <li class="py-2 flex items-center space-x-2">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">
+                    Marnie Robbins
+                  </p>
+                </div>
+              </li>
+
+              <li class="py-2 flex items-center space-x-2">
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <div class="">
+                  <p class="text-sm font-medium dark:text-gray-400 text-gray-900">Ted Fox</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="px-4 py-6">
+            <div class="flex space-x-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 " fill="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+</div>
