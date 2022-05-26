@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import axios from "axios";
+
 
 @Component({
   selector: "app-root",
@@ -7,15 +8,24 @@ import axios from "axios";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit, OnDestroy {
+
   title = "app";
   id = 0;
   person: any;
-  
+  showMenu: Boolean = true;
+
+
+
+  @ViewChild('mobileSideBar') mobileSideBar;
+
   async getRandomUserName() {
     this.person = await this.callMethod(this.person);
     this.ngOnDestroy();
   }
 
+  closeSideBar(){
+      this.showMenu =!this.showMenu;
+  }
 
   async ngOnInit() {
     this.person = await this.callMethod(this.person);
