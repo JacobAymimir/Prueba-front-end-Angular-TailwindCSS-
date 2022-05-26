@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import {
   ApexAxisChartSeries,
+  ApexTheme,
   ApexChart,
   ChartComponent,
   ApexDataLabels,
@@ -19,6 +20,7 @@ import {
 } from "ng-apexcharts";
 
 export type ChartOptions2 = {
+  theme: ApexTheme;
   options: ApexOptions;
   title: ApexTitleSubtitle;
   tooltip: ApexTooltip;
@@ -51,6 +53,7 @@ export class ChartUsersByTypeComponent implements OnInit {
       series: [60, 40],
       chart: {
         type: "donut",
+        foreColor: '#64748B'
       },
       tooltip: {
         enabled: false,
@@ -61,8 +64,12 @@ export class ChartUsersByTypeComponent implements OnInit {
       },
       plotOptions: {
         pie: {
+          customScale: 1,
           startAngle: -145,
           endAngle: 290,
+            donut: {
+          size: '65%'
+        }
         },
       },
       labels: ["New Visitors", "Returning"],

@@ -41,7 +41,7 @@ export class ChartUsersByGenderComponent implements OnInit {
 
   @ViewChild("chart3") chart3: ChartComponent;
   public chartOptions3: Partial<ChartOptions2>;
-  
+
   constructor() {
     this.chartOptions3 = {
       series: [65, 35],
@@ -50,6 +50,8 @@ export class ChartUsersByGenderComponent implements OnInit {
       },
       chart: {
         type: "donut",
+        foreColor: '#64748B',
+
       },
       fill: {
         colors: ["#5b51e8", "#43c682"],

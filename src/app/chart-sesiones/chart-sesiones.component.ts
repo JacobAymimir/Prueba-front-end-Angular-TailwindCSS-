@@ -54,6 +54,7 @@ export class ChartSesionesComponent implements OnInit {
       ],
 
       chart: {
+        foreColor: '#64748B',
         stacked: false,
         height: 350,
         type: "bar",

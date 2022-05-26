@@ -40,7 +40,7 @@ export type ChartOptions = {
   styleUrls: ['./chart-users-by-gender-and-age.component.css']
 })
 export class ChartUsersByGenderAndAgeComponent implements OnInit {
-  
+
   @ViewChild("chart4") chart4: ChartComponent;
   public chartOptions4: Partial<ChartOptions>;
 
@@ -70,6 +70,8 @@ export class ChartUsersByGenderAndAgeComponent implements OnInit {
       ],
 
       chart: {
+        foreColor: '#64748B',
+
         stacked: false,
         height: 350,
         type: "bar",
