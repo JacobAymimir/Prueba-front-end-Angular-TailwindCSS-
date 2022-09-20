@@ -34,5 +34,6 @@ El proyecto tendrá como objetivo las siguientes funcionalidades y caracteristic
 
 <!-- /TOC -->
 
-## Commits
-Se deberán hacer los commits respectivos de cada una de las fases del proyecto.
+## Preview
+
+![preview](https://user-images.githubusercontent.com/40420591/191250428-f687416a-f6d3-4740-a834-c613e461dd00.PNG)
